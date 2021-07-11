@@ -28,6 +28,9 @@ namespace Report
             OperatorClass op = new OperatorClass();
             fillOperatorField(op);
 
+            DataClass dataClass = new DataClass();
+            fillValueDataField(dataClass);
+
             #region A
             //DataTable dt = OperatorClass.SearchOperator();
 
@@ -86,9 +89,38 @@ namespace Report
             }
         }
 
+        private void fillValueDataField(DataClass dataClass)
+        {
+            //DataTable dt = DataClass.SearchCountData();
+            int countCulmn = DataClass.SearchCountData();
+            for (int a = 1; a <= countCulmn; a++)
+            {
+                @field.Items.Add("Value" + a);
+            }
+        }
+
+        private bool IsFloatnumber(string str)
+        {
+            float number = 0;
+            if (!(float.TryParse(str, out number)))
+            {
+                @errorMsg.Content = "* שדה ערך צריך להיות מספר!";
+                return false;
+            }
+            else
+            {
+                @errorMsg.Content = "";
+                return true;
+            }
+        }
+
         private void btnDisplay_Click(object sender, RoutedEventArgs e)
         {
+            bool isFloat = IsFloatnumber(@value.Text);
             Console.WriteLine(@operator.SelectedValue);
+            Console.WriteLine(@field.SelectedValue);
+            Console.WriteLine(@value.Text);
+            Console.WriteLine(isFloat);
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)

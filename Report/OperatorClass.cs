@@ -17,7 +17,6 @@ namespace Report
         public int ID { get; set; }
         public string Name { get; set; }
 
-        //public static SearchOperator(OperatorClass o)
         public static DataTable SearchOperator()
         {
             // Database Connection

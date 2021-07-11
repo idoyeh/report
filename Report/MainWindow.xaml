@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Report"
         mc:Ignorable="d"
-        Title="MainWindow" Height="680" Width="640" FontSize="14" Background="#2CA4A0" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="700" Width="640" FontSize="14" Background="#2CA4A0" WindowStartupLocation="CenterScreen">
     <Border Background="#2e3137" CornerRadius="20" Margin="40" FlowDirection="RightToLeft">
         <StackPanel Margin="20">
             <Label Content="דוח חריגות"
@@ -58,12 +58,14 @@
                    HorizontalAlignment="Right"
                    Margin="0 0 200 0">
                 </Label>
-                <DatePicker Name="field"
-                     Background="#545d6a"
-                     Foreground="White"
+                <ComboBox Name="field"
+                     Background="White"
+                     Foreground="#545d6a"
                      FontSize="20"
+                     Width="140"
+                     FlowDirection="LeftToRight"
                      HorizontalContentAlignment="Center">
-                </DatePicker>
+                </ComboBox>
             </StackPanel>
 
             <!--operator-->
@@ -131,7 +133,15 @@
                     HorizontalContentAlignment="Center">
                 </Button>
             </StackPanel>
-            
+
+            <Label Name="errorMsg"
+                   Content=""
+                   Foreground="Red"
+                   FontSize="20"
+                   HorizontalAlignment="Right"
+                   Margin="0 20 200 0">
+            </Label>
+
         </StackPanel>
     </Border>
 </Window>
