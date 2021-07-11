@@ -1,0 +1,15 @@
+C:\Users\Ido Yehezkel\Desktop\Report\Report\obj\Debug\Report.csprojAssemblyReference.cache
+C:\Users\Ido Yehezkel\Desktop\Report\Report\obj\Debug\MainWindow.g.cs
+C:\Users\Ido Yehezkel\Desktop\Report\Report\obj\Debug\App.g.cs
+C:\Users\Ido Yehezkel\Desktop\Report\Report\obj\Debug\Report_MarkupCompile.cache
+C:\Users\Ido Yehezkel\Desktop\Report\Report\obj\Debug\Report_MarkupCompile.lref
+C:\Users\Ido Yehezkel\Desktop\Report\Report\bin\Debug\Report.exe.config
+C:\Users\Ido Yehezkel\Desktop\Report\Report\bin\Debug\Report.exe
+C:\Users\Ido Yehezkel\Desktop\Report\Report\bin\Debug\Report.pdb
+C:\Users\Ido Yehezkel\Desktop\Report\Report\obj\Debug\MainWindow.baml
+C:\Users\Ido Yehezkel\Desktop\Report\Report\obj\Debug\Report.g.resources
+C:\Users\Ido Yehezkel\Desktop\Report\Report\obj\Debug\Report.Properties.Resources.resources
+C:\Users\Ido Yehezkel\Desktop\Report\Report\obj\Debug\Report.csproj.GenerateResource.cache
+C:\Users\Ido Yehezkel\Desktop\Report\Report\obj\Debug\Report.csproj.CoreCompileInputs.cache
+C:\Users\Ido Yehezkel\Desktop\Report\Report\obj\Debug\Report.exe
+C:\Users\Ido Yehezkel\Desktop\Report\Report\obj\Debug\Report.pdb
