@@ -75,13 +75,14 @@
                    HorizontalAlignment="Right"
                    Margin="0 0 200 0">
                 </Label>
-                <TextBox Name="operator"
+                <ComboBox Name="operator"
                      Background="White"
                      Foreground="#545d6a"
                      FontSize="20"
-                     Width="150"
+                     Width="140"
+                     FlowDirection="LeftToRight"
                      HorizontalContentAlignment="Center">
-                </TextBox>
+                </ComboBox>
             </StackPanel>
 
             <!--value-->
@@ -97,7 +98,7 @@
                      Background="White"
                      Foreground="#545d6a"
                      FontSize="20"
-                     Width="150"
+                     Width="140"
                      HorizontalContentAlignment="Center">
                 </TextBox>
             </StackPanel>
