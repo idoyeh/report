@@ -92,32 +92,37 @@ namespace Report
 
         private void fillOperatorField(OperatorClass op)
         {
-            DataTable dt = OperatorClass.SearchOperator();
+            List<string> dt = OperatorClass.SearchOperator();
 
-            for (int a = 0; a < dt.Rows.Count; a++)
+            for (int a = 0; a < dt.Count; a++)
             {
-                for (int b = 0; b < dt.Columns.Count; b++)
-                {
-                    Console.WriteLine(dt.Rows[a].ItemArray[b]);
-                    @operator.Items.Add(dt.Rows[a].ItemArray[b]);
-                }
+                Console.WriteLine(dt[a]);
+                @operator.Items.Add(dt[a]);
                 Console.WriteLine("--");
             }
         }
 
         private void removeOperatorField(OperatorClass op)
         {
-            DataTable dt = OperatorClass.SearchOperator();
+            //DataTable dt = OperatorClass.SearchOperator();
+            List<string> dt = OperatorClass.SearchOperator();
 
-            for (int a = 0; a < dt.Rows.Count; a++)
+            for (int a = 0; a < dt.Count; a++)
             {
-                for (int b = 0; b < dt.Columns.Count; b++)
-                {
-                    Console.WriteLine(dt.Rows[a].ItemArray[b]);
-                    @operator.Items.Remove(dt.Rows[a].ItemArray[b]);
-                }
+                Console.WriteLine(dt[a]);
+                @operator.Items.Remove(dt[a]);
                 Console.WriteLine("--");
             }
+
+            //for (int a = 0; a < dt.Rows.Count; a++)
+            //{
+            //    for (int b = 0; b < dt.Columns.Count; b++)
+            //    {
+            //        Console.WriteLine(dt.Rows[a].ItemArray[b]);
+            //        @operator.Items.Remove(dt.Rows[a].ItemArray[b]);
+            //    }
+            //    Console.WriteLine("--");
+            //}
         }
 
         private void fillValueDataField(DataClass dataClass)
@@ -179,12 +184,24 @@ namespace Report
         private void btnDisplay_Click(object sender, RoutedEventArgs e)
         {
             bool isFloat = IsFloatnumber(@value.Text);
+            bool isValidDate = false;
+            DateTime dateTime1 = default(DateTime), dateTime2 = default(DateTime);
 
-            string[] t1 = time1.Text.Split(':');
-            DateTime dateTime1 = Convert.ToDateTime(@startDate.Text) + new TimeSpan(Int32.Parse(t1[0]), Int32.Parse(t1[1]), Int32.Parse(t1[2]));
-            string[] t2 = time2.Text.Split(':');
-            DateTime dateTime2 = Convert.ToDateTime(@stopDate.Text) + new TimeSpan(Int32.Parse(t2[0]), Int32.Parse(t2[1]), Int32.Parse(t2[2]));
-            
+
+            if (@startDate.SelectedDate != null)
+            {
+                string[] t1 = time1.Text.Split(':');
+                dateTime1 = Convert.ToDateTime(@startDate.Text) + new TimeSpan(Int32.Parse(t1[0]), Int32.Parse(t1[1]), Int32.Parse(t1[2]));
+                Console.WriteLine(dateTime1);
+            }
+
+            if (@stopDate.SelectedDate != null)
+            {
+                string[] t2 = time2.Text.Split(':');
+                dateTime2 = Convert.ToDateTime(@stopDate.Text) + new TimeSpan(Int32.Parse(t2[0]), Int32.Parse(t2[1]), Int32.Parse(t2[2]));
+                Console.WriteLine(dateTime2);
+            }
+
             #region B
             //Console.WriteLine(@operator.SelectedValue);
             //Console.WriteLine(@field.SelectedValue);
@@ -210,22 +227,31 @@ namespace Report
 
             if (@startDate.SelectedDate == null || @stopDate.SelectedDate == null)
             {
-                // Do what you have to do
-                // read all table - [first date : end date]
-                //SearchFirstAndEndDate();
+                dateTime1 = DataClass.SearchFirstDate();
+                dateTime2 = DataClass.SearchEndDate();
+                isValidDate = true;
             }
             else if ((Convert.ToDateTime(@stopDate.Text) - Convert.ToDateTime(@startDate.Text)).TotalDays < 0)
             {
                 @errorMsg.Content = "* תקנו - תאריך התחלה צריך לבוא לפני תאריך סיום!";
+                isValidDate = false;
             }
             else if(!stringTimeDistance(@time1.Text, @time2.Text))
             {
                 @errorMsg.Content = "* תקנו - זמן התחלה צריך לבוא לפני זמן סיום!";
+                isValidDate = false;
+            }
+            else
+            {
+                isValidDate = true;
             }
 
-            if (isFloat && isSelected())
+            if (isFloat && isSelected() && isValidDate)
             {
-                queryClass query = new queryClass(dateTime1, dateTime2, @field.SelectedValue.ToString(), @operator.SelectedValue.ToString(), float.Parse(@value.Text));
+                queryClass query = new queryClass(dateTime1, dateTime2, @field.SelectedValue.ToString(), @operator.SelectedValue.ToString(), float.Parse(@value.Text), DataClass.SearchCountData());
+                ReportTable reportTable = new ReportTable(query);
+                reportTable.Show();
+                this.Close();
             }
         }
 

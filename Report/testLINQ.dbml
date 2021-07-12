@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="test" Class="testLINQDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-NSUOOFBL\SQLEXPRESS1;Initial Catalog=test;Integrated Security=True" SettingsObjectName="Report.Properties.Settings" SettingsPropertyName="testConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DATA" Member="DATAs">
+    <Type Name="DATA">
+      <Column Name="Date_Time" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Value1" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status1" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value2" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status2" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value3" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status3" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value4" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status4" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value5" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status5" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value6" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status6" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value7" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status7" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value8" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status8" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value9" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status9" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value10" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status10" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value11" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status11" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value12" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status12" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value13" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status13" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value14" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status14" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value15" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status15" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value16" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status16" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value17" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status17" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value18" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status18" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value19" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status19" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value20" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status20" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value21" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status21" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value22" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status22" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value23" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status23" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value24" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status24" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value25" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status25" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value26" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status26" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value27" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status27" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value28" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status28" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value29" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status29" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value30" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status30" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value31" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status31" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Value32" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Status32" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OPERATOR" Member="OPERATORs">
+    <Type Name="OPERATOR">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.STATUS" Member="STATUS">
+    <Type Name="STATUS">
+      <Column Name="Id" Type="System.Int16" DbType="SmallInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Valid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

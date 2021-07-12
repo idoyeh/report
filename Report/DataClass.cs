@@ -14,6 +14,8 @@ namespace Report
 {
     public class DataClass
     {
+        testLINQDataContext db = new testLINQDataContext(Properties.Settings.Default.testConnectionString);
+
         public DateTime Date1 { get; set; }
         public List<double> Values { get; set; }
         public List<int> Status { get; set; }
@@ -30,9 +32,9 @@ namespace Report
                 {
                     sqlCon.Open();
                 }
-                
-                String query = "select (count(*)/2) from information_schema.columns where table_name = 'DATA' ";
 
+                String query = "select (count(*)/2) from information_schema.columns where table_name = 'DATA' ";
+                
                 // Creating sqlCmd using query and sqlCon
                 SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
 
@@ -53,39 +55,50 @@ namespace Report
             return Convert.ToInt32(dt.Rows[0][0]);
         }
 
-        //public static int SearchFirstAndEndDate()
-        //{
-        //    // Database Connection
-        //    SqlConnection sqlCon = new SqlConnection("your connection string");
-        //    DataTable dt = new DataTable();
+        public static DateTime SearchFirstDate()
+        {
+            // Database Connection
+            DataClass query1 = new DataClass();
+            DateTime date = default(DateTime);
 
-        //    try
-        //    {
-        //        if (sqlCon.State == System.Data.ConnectionState.Closed)
-        //        {
-        //            sqlCon.Open();
-        //        }
+            try
+            {
+                date = query1.db.DATAs.Select(s => s.Date_Time).First();
+                Console.Write("count -> ");
+                Console.WriteLine(date);
+                Console.WriteLine("-----------------------");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+            }
+            return date;
+        }
 
-        //        String query = "select Date_Time from information_schema.columns where table_name = 'DATA' ";
+        public static DateTime SearchEndDate()
+        {
+            // Database Connection
+            DataClass query1 = new DataClass();
+            DateTime date = default(DateTime);
 
-        //        // Creating sqlCmd using query and sqlCon
-        //        SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-
-        //        Console.WriteLine("-----------------------");
-
-        //        // Creating SQL DataAdapter using sqlCmd
-        //        SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
-        //        adapter.Fill(dt);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        sqlCon.Close();
-        //    }
-        //    return Convert.ToInt32(dt.Rows[0][0]);
-        //}
+            try
+            {
+                date = query1.db.DATAs.OrderByDescending(o => o.Date_Time).Select(s => s.Date_Time).First();
+                Console.Write("count -> ");
+                Console.WriteLine(date);
+                Console.WriteLine("-----------------------");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+            }
+            return date;
+        }
     }
 }

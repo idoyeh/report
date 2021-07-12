@@ -14,32 +14,27 @@ namespace Report
 {
     public class OperatorClass
     {
+        testLINQDataContext db = new testLINQDataContext(Properties.Settings.Default.testConnectionString);
+
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public static DataTable SearchOperator()
+        public static List<string> SearchOperator()
         {
             // Database Connection
-            SqlConnection sqlCon = new SqlConnection(@"data source=LAPTOP-NSUOOFBL\SQLEXPRESS1; initial catalog=test; integrated security=True;");
-            DataTable dt = new DataTable();
+            OperatorClass query1 = new OperatorClass();
+            List<string> strOperator = new List<string>();
 
             try
             {
-                if (sqlCon.State == System.Data.ConnectionState.Closed)
+                strOperator = query1.db.OPERATORs.Select(n => n.Name).ToList();
+
+                for (var i = 0; i < strOperator.Count; i++)
                 {
-                    sqlCon.Open();
+                    Console.Write("strOperator -> ");
+                    Console.WriteLine(strOperator);
                 }
-
-                //String query = "select Name from OPERATOR where ID=4";
-                String query = "select Name from OPERATOR ";
-                // Creating sqlCmd using query and sqlCon
-                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-
                 Console.WriteLine("-----------------------");
-
-                // Creating SQL DataAdapter using sqlCmd
-                SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
-                adapter.Fill(dt);
             }
             catch (Exception ex)
             {
@@ -47,9 +42,9 @@ namespace Report
             }
             finally
             {
-                sqlCon.Close();
             }
-            return dt;
+            return strOperator;
+            
         }
     }
 }

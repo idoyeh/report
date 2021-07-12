@@ -19,14 +19,17 @@ namespace Report
         public string ValueField { get; set; }
         public string Operator { get; set; }
         public double Value { get; set; }
+        public int NomOfClmn { get; set; }
 
-        public queryClass(DateTime firstDate, DateTime endDate, string valueField, string operator1, double value)
+        public queryClass(DateTime firstDate, DateTime endDate, string valueField, string operator1, double value, int nomOfClmn)
         {
             this.FirstDate = firstDate;
             this.EndDate = endDate;
             this.ValueField = valueField;
             this.Operator = operator1;
             this.Value = value;
+            this.NomOfClmn = nomOfClmn;
+
 
             //Console.WriteLine("--");
             //Console.Write("FirstDate -> ");

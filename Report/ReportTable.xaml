@@ -1,0 +1,33 @@
+﻿<Window x:Class="Report.ReportTable"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Report"
+        mc:Ignorable="d"
+        Title="ReportTable" Height="550" Width="840" FontSize="14" Background="#04c582"
+        WindowStartupLocation="CenterScreen">
+    <Grid FlowDirection="LeftToRight">
+        <StackPanel Margin="20">
+            <Label Content="דוח חריגות" Foreground="White" FontSize="25" HorizontalAlignment="Center"></Label>
+
+            <DataGrid Name="displayDetails" AutoGenerateColumns="False" Padding="10" Margin="20" Width="740" Height="260" Background="Wheat" VerticalAlignment="Center">
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Binding="{Binding UserID}" Header="Time Stamp" />
+                    <DataGridTextColumn Binding="{Binding FirstName}" Header="Value1" />
+                    <DataGridTextColumn Binding="{Binding LastName}" Header="Status1" />
+                    
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button Name="btnBackPage"
+                    Content="חזרה לעמוד הקודם"
+                    Height="30"
+                    Width="140"
+                    Click="Btn_Click"
+                    ToolTip="חזרה לעמוד קודם"></Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

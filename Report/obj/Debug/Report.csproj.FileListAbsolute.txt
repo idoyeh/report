@@ -28,3 +28,5 @@ C:\Users\Ido Yehezkel\Desktop\gitHub\report\Report\obj\Debug\Report.csproj.Gener
 C:\Users\Ido Yehezkel\Desktop\gitHub\report\Report\obj\Debug\Report.csproj.CoreCompileInputs.cache
 C:\Users\Ido Yehezkel\Desktop\gitHub\report\Report\obj\Debug\Report.exe
 C:\Users\Ido Yehezkel\Desktop\gitHub\report\Report\obj\Debug\Report.pdb
+C:\Users\Ido Yehezkel\Desktop\gitHub\report\Report\obj\Debug\ReportTable.g.cs
+C:\Users\Ido Yehezkel\Desktop\gitHub\report\Report\obj\Debug\ReportTable.baml
