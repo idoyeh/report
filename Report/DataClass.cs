@@ -52,5 +52,40 @@ namespace Report
             }
             return Convert.ToInt32(dt.Rows[0][0]);
         }
+
+        //public static int SearchFirstAndEndDate()
+        //{
+        //    // Database Connection
+        //    SqlConnection sqlCon = new SqlConnection("your connection string");
+        //    DataTable dt = new DataTable();
+
+        //    try
+        //    {
+        //        if (sqlCon.State == System.Data.ConnectionState.Closed)
+        //        {
+        //            sqlCon.Open();
+        //        }
+
+        //        String query = "select Date_Time from information_schema.columns where table_name = 'DATA' ";
+
+        //        // Creating sqlCmd using query and sqlCon
+        //        SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+
+        //        Console.WriteLine("-----------------------");
+
+        //        // Creating SQL DataAdapter using sqlCmd
+        //        SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
+        //        adapter.Fill(dt);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        sqlCon.Close();
+        //    }
+        //    return Convert.ToInt32(dt.Rows[0][0]);
+        //}
     }
 }

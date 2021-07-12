@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Report"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="640" FontSize="14" Background="#2CA4A0" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="700" Width="720" FontSize="14" Background="#2CA4A0" WindowStartupLocation="CenterScreen">
     <Border Background="#2e3137" CornerRadius="20" Margin="40" FlowDirection="RightToLeft">
         <StackPanel Margin="20">
             <Label Content="דוח חריגות"
@@ -22,14 +22,21 @@
                    FontSize="20"
                    Width="100"
                    HorizontalAlignment="Right"
-                   Margin="0 0 200 0">
+                   Margin="0 0 80 0">
                 </Label>
                 <DatePicker Name="startDate"
                      Background="#545d6a"
-                     Foreground="White"
+                     Foreground="Blue"
                      FontSize="20"
+                     Margin="0 0 60 0"
                      HorizontalContentAlignment="Center">
                 </DatePicker>
+                <TextBox Name="time1"
+                     Background="White"
+                     Foreground="Blue"
+                     FontSize="20"
+                     Width="160">
+                </TextBox>
             </StackPanel>
 
             <!--stopDate-->
@@ -39,14 +46,21 @@
                    FontSize="20"
                    Width="100"
                    HorizontalAlignment="Right"
-                   Margin="0 0 200 0">
+                   Margin="0 0 80 0">
                 </Label>
                 <DatePicker Name="stopDate"
                      Background="#545d6a"
-                     Foreground="White"
+                     Foreground="Blue"
                      FontSize="20"
+                     Margin="0 0 60 0"
                      HorizontalContentAlignment="Center">
                 </DatePicker>
+                <TextBox Name="time2"
+                     Background="White"
+                     Foreground="Blue"
+                     FontSize="20"
+                     Width="160">
+                </TextBox>
             </StackPanel>
 
             <!--field-->
@@ -137,7 +151,7 @@
             <Label Name="errorMsg"
                    Content=""
                    Foreground="Red"
-                   FontSize="20"
+                   FontSize="14"
                    HorizontalAlignment="Right"
                    Margin="0 20 200 0">
             </Label>

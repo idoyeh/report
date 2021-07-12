@@ -22,14 +22,13 @@ namespace Report
     /// </summary>
     public partial class MainWindow : Window
     {
+        OperatorClass op = new OperatorClass();
+        DataClass dataClass = new DataClass();
+
         public MainWindow()
         {
             InitializeComponent();
-            OperatorClass op = new OperatorClass();
-            fillOperatorField(op);
-
-            DataClass dataClass = new DataClass();
-            fillValueDataField(dataClass);
+            init();
 
             #region A
             //DataTable dt = OperatorClass.SearchOperator();
@@ -74,6 +73,23 @@ namespace Report
             #endregion
         }
 
+        private void init()
+        {
+            fillOperatorField(op);
+            fillValueDataField(dataClass);
+
+            @startDate.SelectedDate = null;
+            @stopDate.SelectedDate = null;
+
+            @time1.Text = "00:00:00.000";
+            @time2.Text = "00:00:00.000";
+
+            // clear value field
+            @value.Text = "";
+            // clear error message
+            @errorMsg.Content = "";
+        }
+
         private void fillOperatorField(OperatorClass op)
         {
             DataTable dt = OperatorClass.SearchOperator();
@@ -89,9 +105,23 @@ namespace Report
             }
         }
 
+        private void removeOperatorField(OperatorClass op)
+        {
+            DataTable dt = OperatorClass.SearchOperator();
+
+            for (int a = 0; a < dt.Rows.Count; a++)
+            {
+                for (int b = 0; b < dt.Columns.Count; b++)
+                {
+                    Console.WriteLine(dt.Rows[a].ItemArray[b]);
+                    @operator.Items.Remove(dt.Rows[a].ItemArray[b]);
+                }
+                Console.WriteLine("--");
+            }
+        }
+
         private void fillValueDataField(DataClass dataClass)
         {
-            //DataTable dt = DataClass.SearchCountData();
             int countCulmn = DataClass.SearchCountData();
             for (int a = 1; a <= countCulmn; a++)
             {
@@ -99,6 +129,15 @@ namespace Report
             }
         }
 
+        private void removeValueDataField(DataClass dataClass)
+        {
+            int countCulmn = DataClass.SearchCountData();
+            for (int a = 1; a <= countCulmn; a++)
+            {
+                @field.Items.Remove("Value" + a);
+            }
+        }
+        
         private bool IsFloatnumber(string str)
         {
             float number = 0;
@@ -114,18 +153,69 @@ namespace Report
             }
         }
 
+        private bool stringTimeDistance(string first, string second)
+        {
+            string[] time1 = first.Split(':');
+            string[] time2 = second.Split(':');
+
+            if (Int32.Parse(time2[0]) > Int32.Parse(time1[0]))
+            {
+                return false;
+            }
+            else if (Int32.Parse(time2[1]) > Int32.Parse(time1[1]))
+            {
+                return false;
+            }
+            else if (float.Parse(time2[2]) > float.Parse(time1[2]))
+            {
+                return false;
+            }
+            return true;
+        }
+
         private void btnDisplay_Click(object sender, RoutedEventArgs e)
         {
             bool isFloat = IsFloatnumber(@value.Text);
-            Console.WriteLine(@operator.SelectedValue);
-            Console.WriteLine(@field.SelectedValue);
-            Console.WriteLine(@value.Text);
-            Console.WriteLine(isFloat);
+            #region B
+            //Console.WriteLine(@operator.SelectedValue);
+            //Console.WriteLine(@field.SelectedValue);
+            //Console.WriteLine(@value.Text);
+            //Console.WriteLine(isFloat);
+            //Console.WriteLine("-----");
+            //Console.WriteLine(@startDate.Text);
+            //Console.WriteLine(@stopDate.Text);
+
+            //Console.WriteLine((Convert.ToDateTime(@stopDate.Text) - Convert.ToDateTime(@startDate.Text)).TotalDays < 0);
+            //Console.WriteLine((Convert.ToDateTime(@stopDate.Text) - Convert.ToDateTime(@startDate.Text)).TotalDays);
+            //Console.WriteLine("-----");
+
+            //Console.WriteLine(@time1.Text);
+            //Console.WriteLine(@time2.Text);
+            //Console.WriteLine(stringTimeDistance(@time1.Text, @time2.Text));
+            //Console.WriteLine("-----");
+            #endregion
+
+            if (@startDate.SelectedDate == null || @stopDate.SelectedDate == null)
+            {
+                // Do what you have to do
+                //SearchFirstAndEndDate();
+            }
+            else if ((Convert.ToDateTime(@stopDate.Text) - Convert.ToDateTime(@startDate.Text)).TotalDays < 0)
+            {
+                @errorMsg.Content = "* תקנו - תאריך התחלה צריך לבוא לפני תאריך סיום!";
+            }
+            else if(!stringTimeDistance(@time1.Text, @time2.Text))
+            {
+                @errorMsg.Content = "* תקנו - זמן התחלה צריך לבוא לפני זמן סיום!";
+            }
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
         {
-
+            removeOperatorField(op);
+            removeValueDataField(dataClass);
+            init();
         }
     }
+    
 }
