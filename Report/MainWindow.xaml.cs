@@ -81,9 +81,9 @@ namespace Report
             @startDate.SelectedDate = null;
             @stopDate.SelectedDate = null;
 
-            @time1.Text = "00:00:00.000";
-            @time2.Text = "00:00:00.000";
-
+            @time1.Text = "00:00:00";
+            @time2.Text = "00:00:00";
+            
             // clear value field
             @value.Text = "";
             // clear error message
@@ -157,25 +157,34 @@ namespace Report
         {
             string[] time1 = first.Split(':');
             string[] time2 = second.Split(':');
-
-            if (Int32.Parse(time2[0]) > Int32.Parse(time1[0]))
+            
+            if (Int32.Parse(time1[0]) > Int32.Parse(time2[0]))
             {
                 return false;
             }
-            else if (Int32.Parse(time2[1]) > Int32.Parse(time1[1]))
+            else if ((Int32.Parse(time1[0]) == Int32.Parse(time2[0])) && Int32.Parse(time1[1]) > Int32.Parse(time2[1]))
             {
                 return false;
             }
-            else if (float.Parse(time2[2]) > float.Parse(time1[2]))
+            else if ((Int32.Parse(time1[0]) == Int32.Parse(time2[0])) && (Int32.Parse(time1[1]) == Int32.Parse(time2[1])) && (float.Parse(time1[2]) > float.Parse(time2[2])))
             {
                 return false;
             }
-            return true;
+            else
+            {
+                return true;
+            }
         }
 
         private void btnDisplay_Click(object sender, RoutedEventArgs e)
         {
             bool isFloat = IsFloatnumber(@value.Text);
+
+            string[] t1 = time1.Text.Split(':');
+            DateTime dateTime1 = Convert.ToDateTime(@startDate.Text) + new TimeSpan(Int32.Parse(t1[0]), Int32.Parse(t1[1]), Int32.Parse(t1[2]));
+            string[] t2 = time2.Text.Split(':');
+            DateTime dateTime2 = Convert.ToDateTime(@stopDate.Text) + new TimeSpan(Int32.Parse(t2[0]), Int32.Parse(t2[1]), Int32.Parse(t2[2]));
+            
             #region B
             //Console.WriteLine(@operator.SelectedValue);
             //Console.WriteLine(@field.SelectedValue);
@@ -193,11 +202,16 @@ namespace Report
             //Console.WriteLine(@time2.Text);
             //Console.WriteLine(stringTimeDistance(@time1.Text, @time2.Text));
             //Console.WriteLine("-----");
+
+            //Console.WriteLine(dateTime1);
+            //Console.WriteLine(dateTime2);
+
             #endregion
 
             if (@startDate.SelectedDate == null || @stopDate.SelectedDate == null)
             {
                 // Do what you have to do
+                // read all table - [first date : end date]
                 //SearchFirstAndEndDate();
             }
             else if ((Convert.ToDateTime(@stopDate.Text) - Convert.ToDateTime(@startDate.Text)).TotalDays < 0)
@@ -208,6 +222,33 @@ namespace Report
             {
                 @errorMsg.Content = "* תקנו - זמן התחלה צריך לבוא לפני זמן סיום!";
             }
+
+            if (isFloat && isSelected())
+            {
+                queryClass query = new queryClass(dateTime1, dateTime2, @field.SelectedValue.ToString(), @operator.SelectedValue.ToString(), float.Parse(@value.Text));
+            }
+        }
+
+        private bool isSelected()
+        {
+            if (@field.SelectedValue == null)
+            {
+                @errorMsg.Content = "* בחרו שדה!";
+                return false;
+            }
+
+            if (@operator.SelectedValue == null)
+            {
+                @errorMsg.Content = "* בחרו אופרטור!";
+                return false;
+            }
+
+            if (@operator.SelectedValue != null && @field.SelectedValue != null)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
