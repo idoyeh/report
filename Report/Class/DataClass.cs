@@ -16,14 +16,10 @@ namespace Report
     {
         testLINQDataContext db = new testLINQDataContext(Properties.Settings.Default.testConnectionString);
 
-        public DateTime Date1 { get; set; }
-        public List<double> Values { get; set; }
-        public List<int> Status { get; set; }
-
         public static int SearchCountData()
         {
             // Database Connection
-            SqlConnection sqlCon = new SqlConnection(@"data source=LAPTOP-NSUOOFBL\SQLEXPRESS1; initial catalog=test; integrated security=True;");
+            SqlConnection sqlCon = new SqlConnection(GlobalVariableClass.sql_Connection);
             DataTable dt = new DataTable();
 
             try
@@ -34,11 +30,9 @@ namespace Report
                 }
 
                 String query = "select (count(*)/2) from information_schema.columns where table_name = 'DATA' ";
-                
+
                 // Creating sqlCmd using query and sqlCon
                 SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-
-                Console.WriteLine("-----------------------");
 
                 // Creating SQL DataAdapter using sqlCmd
                 SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
@@ -55,6 +49,38 @@ namespace Report
             return Convert.ToInt32(dt.Rows[0][0]);
         }
 
+        public static void oneRow()
+        {
+            // Database Connection
+            SqlConnection sqlCon = new SqlConnection(GlobalVariableClass.sql_Connection);
+            DataTable dt = new DataTable();
+
+            try
+            {
+                if (sqlCon.State == System.Data.ConnectionState.Closed)
+                {
+                    sqlCon.Open();
+                }
+
+                String query = "select (count(*)/2) from information_schema.columns where table_name = 'DATA' ";
+
+                // Creating sqlCmd using query and sqlCon
+                SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
+
+                // Creating SQL DataAdapter using sqlCmd
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
+                adapter.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlCon.Close();
+            }
+        }
+
         public static DateTime SearchFirstDate()
         {
             // Database Connection
@@ -64,9 +90,6 @@ namespace Report
             try
             {
                 date = query1.db.DATAs.Select(s => s.Date_Time).First();
-                Console.Write("count -> ");
-                Console.WriteLine(date);
-                Console.WriteLine("-----------------------");
             }
             catch (Exception ex)
             {
@@ -87,9 +110,6 @@ namespace Report
             try
             {
                 date = query1.db.DATAs.OrderByDescending(o => o.Date_Time).Select(s => s.Date_Time).First();
-                Console.Write("count -> ");
-                Console.WriteLine(date);
-                Console.WriteLine("-----------------------");
             }
             catch (Exception ex)
             {

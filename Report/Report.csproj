@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Class\GlobalVariableClass.cs" />
     <Compile Include="ReportTable.xaml.cs">
       <DependentUpon>ReportTable.xaml</DependentUpon>
     </Compile>
@@ -77,15 +78,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataClass.cs" />
+    <Compile Include="Class\DataClass.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="queryClass.cs" />
-    <Compile Include="OperatorClass.cs" />
+    <Compile Include="Class\queryClass.cs" />
+    <Compile Include="Class\OperatorClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

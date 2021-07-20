@@ -16,9 +16,6 @@ namespace Report
     {
         testLINQDataContext db = new testLINQDataContext(Properties.Settings.Default.testConnectionString);
 
-        public int ID { get; set; }
-        public string Name { get; set; }
-
         public static List<string> SearchOperator()
         {
             // Database Connection
@@ -28,13 +25,6 @@ namespace Report
             try
             {
                 strOperator = query1.db.OPERATORs.Select(n => n.Name).ToList();
-
-                for (var i = 0; i < strOperator.Count; i++)
-                {
-                    Console.Write("strOperator -> ");
-                    Console.WriteLine(strOperator);
-                }
-                Console.WriteLine("-----------------------");
             }
             catch (Exception ex)
             {
@@ -44,7 +34,6 @@ namespace Report
             {
             }
             return strOperator;
-            
         }
     }
 }

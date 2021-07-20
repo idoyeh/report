@@ -29,48 +29,6 @@ namespace Report
         {
             InitializeComponent();
             init();
-
-            #region A
-            //DataTable dt = OperatorClass.SearchOperator();
-
-            //for (int a = 0; a < dt.Rows.Count; a++)
-            //{
-            //    for (int b = 0; b < dt.Columns.Count; b++)
-            //    {
-            //        Console.WriteLine(dt.Rows[a].ItemArray[b]);
-            //        @operator.Items.Add(dt.Rows[a].ItemArray[b]);
-            //    }
-            //}
-
-            //SqlConnection sqlCon = new SqlConnection(@"data source=LAPTOP-NSUOOFBL\SQLEXPRESS1; initial catalog=test; integrated security=True;");
-            //DataTable dt = new DataTable();
-
-            //if (sqlCon.State == System.Data.ConnectionState.Closed)
-            //{
-            //    sqlCon.Open();
-            //}
-
-            ////String query = "select Name from OPERATOR where ID=4";
-            //String query = "select Name from OPERATOR ";
-            //// Creating sqlCmd using query and sqlCon
-            //SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-
-            //Console.WriteLine("-----------------------");
-
-            //// Creating SQL DataAdapter using sqlCmd
-            //SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
-            //adapter.Fill(dt);
-
-            //for (int a = 0; a < dt.Rows.Count; a++)
-            //{
-            //    for (int b = 0; b < dt.Columns.Count; b++)
-            //    {
-            //        Console.WriteLine(dt.Rows[a].ItemArray[b]);
-            //        @operator.Items.Add(dt.Rows[a].ItemArray[b]);
-            //    }
-            //    Console.WriteLine("--");
-            //}
-            #endregion
         }
 
         private void init()
@@ -83,10 +41,8 @@ namespace Report
 
             @time1.Text = "00:00:00";
             @time2.Text = "00:00:00";
-            
-            // clear value field
+
             @value.Text = "";
-            // clear error message
             @errorMsg.Content = "";
         }
 
@@ -96,33 +52,18 @@ namespace Report
 
             for (int a = 0; a < dt.Count; a++)
             {
-                Console.WriteLine(dt[a]);
                 @operator.Items.Add(dt[a]);
-                Console.WriteLine("--");
             }
         }
 
         private void removeOperatorField(OperatorClass op)
         {
-            //DataTable dt = OperatorClass.SearchOperator();
             List<string> dt = OperatorClass.SearchOperator();
 
             for (int a = 0; a < dt.Count; a++)
             {
-                Console.WriteLine(dt[a]);
                 @operator.Items.Remove(dt[a]);
-                Console.WriteLine("--");
             }
-
-            //for (int a = 0; a < dt.Rows.Count; a++)
-            //{
-            //    for (int b = 0; b < dt.Columns.Count; b++)
-            //    {
-            //        Console.WriteLine(dt.Rows[a].ItemArray[b]);
-            //        @operator.Items.Remove(dt.Rows[a].ItemArray[b]);
-            //    }
-            //    Console.WriteLine("--");
-            //}
         }
 
         private void fillValueDataField(DataClass dataClass)
@@ -142,7 +83,7 @@ namespace Report
                 @field.Items.Remove("Value" + a);
             }
         }
-        
+
         private bool IsFloatnumber(string str)
         {
             float number = 0;
@@ -158,72 +99,53 @@ namespace Report
             }
         }
 
-        private bool stringTimeDistance(string first, string second)
+        private bool checkValidTime(string first, string second)
         {
             string[] time1 = first.Split(':');
             string[] time2 = second.Split(':');
-            
-            if (Int32.Parse(time1[0]) > Int32.Parse(time2[0]))
+
+            TimeSpan dummyOutput;
+
+            if (TimeSpan.TryParse(first, out dummyOutput) && TimeSpan.TryParse(second, out dummyOutput))
             {
-                return false;
-            }
-            else if ((Int32.Parse(time1[0]) == Int32.Parse(time2[0])) && Int32.Parse(time1[1]) > Int32.Parse(time2[1]))
-            {
-                return false;
-            }
-            else if ((Int32.Parse(time1[0]) == Int32.Parse(time2[0])) && (Int32.Parse(time1[1]) == Int32.Parse(time2[1])) && (float.Parse(time1[2]) > float.Parse(time2[2])))
-            {
-                return false;
-            }
-            else
-            {
+                if ((Int32.Parse(time1[0]) < 0 || Int32.Parse(time1[0]) >= 24)
+                || (Int32.Parse(time1[1]) < 0 || Int32.Parse(time1[1]) > 59)
+                || (Int32.Parse(time1[2]) < 0 || Int32.Parse(time1[2]) > 59))
+                {
+                    return false;
+                }
+
+                if ((Int32.Parse(time2[0]) < 0 || Int32.Parse(time2[0]) >= 24)
+                    || (Int32.Parse(time2[1]) < 0 || Int32.Parse(time2[1]) > 59)
+                    || (Int32.Parse(time2[2]) < 0 || Int32.Parse(time2[2]) > 59))
+                {
+                    return false;
+                }
                 return true;
             }
+
+            return false;
         }
 
         private void btnDisplay_Click(object sender, RoutedEventArgs e)
         {
             bool isFloat = IsFloatnumber(@value.Text);
             bool isValidDate = false;
+            bool isValidTime = true;
             DateTime dateTime1 = default(DateTime), dateTime2 = default(DateTime);
-
+            double totalDay = 0;
 
             if (@startDate.SelectedDate != null)
             {
                 string[] t1 = time1.Text.Split(':');
                 dateTime1 = Convert.ToDateTime(@startDate.Text) + new TimeSpan(Int32.Parse(t1[0]), Int32.Parse(t1[1]), Int32.Parse(t1[2]));
-                Console.WriteLine(dateTime1);
             }
 
             if (@stopDate.SelectedDate != null)
             {
                 string[] t2 = time2.Text.Split(':');
                 dateTime2 = Convert.ToDateTime(@stopDate.Text) + new TimeSpan(Int32.Parse(t2[0]), Int32.Parse(t2[1]), Int32.Parse(t2[2]));
-                Console.WriteLine(dateTime2);
             }
-
-            #region B
-            //Console.WriteLine(@operator.SelectedValue);
-            //Console.WriteLine(@field.SelectedValue);
-            //Console.WriteLine(@value.Text);
-            //Console.WriteLine(isFloat);
-            //Console.WriteLine("-----");
-            //Console.WriteLine(@startDate.Text);
-            //Console.WriteLine(@stopDate.Text);
-
-            //Console.WriteLine((Convert.ToDateTime(@stopDate.Text) - Convert.ToDateTime(@startDate.Text)).TotalDays < 0);
-            //Console.WriteLine((Convert.ToDateTime(@stopDate.Text) - Convert.ToDateTime(@startDate.Text)).TotalDays);
-            //Console.WriteLine("-----");
-
-            //Console.WriteLine(@time1.Text);
-            //Console.WriteLine(@time2.Text);
-            //Console.WriteLine(stringTimeDistance(@time1.Text, @time2.Text));
-            //Console.WriteLine("-----");
-
-            //Console.WriteLine(dateTime1);
-            //Console.WriteLine(dateTime2);
-
-            #endregion
 
             if (@startDate.SelectedDate == null || @stopDate.SelectedDate == null)
             {
@@ -231,12 +153,14 @@ namespace Report
                 dateTime2 = DataClass.SearchEndDate();
                 isValidDate = true;
             }
-            else if ((Convert.ToDateTime(@stopDate.Text) - Convert.ToDateTime(@startDate.Text)).TotalDays < 0)
+            totalDay = (dateTime2 - dateTime1).TotalDays;
+
+            if (totalDay <= -1)
             {
                 @errorMsg.Content = "* תקנו - תאריך התחלה צריך לבוא לפני תאריך סיום!";
                 isValidDate = false;
             }
-            else if(!stringTimeDistance(@time1.Text, @time2.Text))
+            else if (totalDay > -1 && totalDay < 0)
             {
                 @errorMsg.Content = "* תקנו - זמן התחלה צריך לבוא לפני זמן סיום!";
                 isValidDate = false;
@@ -246,9 +170,19 @@ namespace Report
                 isValidDate = true;
             }
 
-            if (isFloat && isSelected() && isValidDate)
+            if (!checkValidTime(@time1.Text, @time2.Text))
             {
-                queryClass query = new queryClass(dateTime1, dateTime2, @field.SelectedValue.ToString(), @operator.SelectedValue.ToString(), float.Parse(@value.Text), DataClass.SearchCountData());
+                @errorMsg.Content = "* תקנו - זמן לא תקין!";
+                isValidTime = false;
+            }
+            else
+            {
+                isValidTime = true;
+            }
+
+            if (isFloat && isSelected() && isValidDate && isValidTime)
+            {
+                queryClass query = new queryClass(dateTime1, dateTime2, @field.SelectedValue.ToString(), @operator.SelectedValue.ToString(), float.Parse(@value.Text));
                 ReportTable reportTable = new ReportTable(query);
                 reportTable.Show();
                 this.Close();
@@ -284,5 +218,5 @@ namespace Report
             init();
         }
     }
-    
+
 }

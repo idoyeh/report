@@ -11,14 +11,7 @@
         <StackPanel Margin="20">
             <Label Content="דוח חריגות" Foreground="White" FontSize="25" HorizontalAlignment="Center"></Label>
 
-            <DataGrid Name="displayDetails" AutoGenerateColumns="False" Padding="10" Margin="20" Width="740" Height="260" Background="Wheat" VerticalAlignment="Center">
-                <DataGrid.Columns>
-
-                    <DataGridTextColumn Binding="{Binding UserID}" Header="Time Stamp" />
-                    <DataGridTextColumn Binding="{Binding FirstName}" Header="Value1" />
-                    <DataGridTextColumn Binding="{Binding LastName}" Header="Status1" />
-                    
-                </DataGrid.Columns>
+            <DataGrid Name="displayDetails" AutoGenerateColumns="True" Padding="10" Margin="20" Width="740" Height="260" Background="Wheat" VerticalAlignment="Center">
             </DataGrid>
 
             <Button Name="btnBackPage"
