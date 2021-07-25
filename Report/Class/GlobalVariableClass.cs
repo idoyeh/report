@@ -9,12 +9,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
+using System.Configuration;
 
 namespace Report
 {
     public static class GlobalVariableClass
     {
-        public static string sql_Connection = @"data source=LAPTOP-NSUOOFBL\SQLEXPRESS1; initial catalog=test; integrated security=True;";
+        // Put "dbContext" name in the App.config
+        public static string sql_Connection = ConfigurationManager.ConnectionStrings["dbContext"].ConnectionString;
 
     }
 }
