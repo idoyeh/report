@@ -27,3 +27,6 @@ Fields Value and Status are linked to each other by the number.
 3. STATUS - A table containing the different statutes.
 Valid - Where the column value is 1, the data is correct.
 If the value is 0 , the Name must be displayed instead of the value in the report results.
+
+![‏‏reportImg](https://user-images.githubusercontent.com/64954264/127173583-cc25a721-e27a-45e4-8625-30ec85aae4fc.PNG)
+
