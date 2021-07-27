@@ -6,19 +6,19 @@ Develop an exceptions report:
 Create a gui user interface that can be exported with a report that reports exceptions or value equality to a particular value by checking the database.
 
 
-Report structure:
+✔ Report structure:
 The user selects the report period(start date and end date), a field for testing, operator and value.<br/>
 
-✔ Before viewing the report, it is checked to see if the corresponding data is valid(According to the status) and view the results of the report in a table, if the data is invalid, its status must be displayed instead(Name).<br/>
+- Before viewing the report, it is checked to see if the corresponding data is valid(According to the status) and view the results of the report in a table, if the data is invalid, its status must be displayed instead(Name).<br/>
 
-✔ Filters by the selected field and displays all columns in the same timestamp. If no date is selected, the entire date range in the report will be displayed.<br/>
+- Filters by the selected field and displays all columns in the same timestamp. If no date is selected, the entire date range in the report will be displayed.<br/>
 
 # Example - The number of columns in a DATA table is dynamic
 ![report](https://user-images.githubusercontent.com/64954264/127176227-fb3c1fdc-ea8a-472f-8c55-c453ce876595.gif)
 
 
 
-The sql database has 3 tables: DATA, STATUS and OPERATOR.
+✔ The sql database has 3 tables: DATA, STATUS and OPERATOR.
 
 1. DATA - A table that contains the values according to the different fields and the timestamp of each value.
 Time_Date - The timestamp. Uses the "From Date" and "To Date" fields.
