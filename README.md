@@ -1,5 +1,6 @@
-# Wpf application for manager: C#, WPF, MSSQL.
-# Read and enter data and run complex queries(Dynamic SQL).
+# report
+Wpf application for manager: C#, WPF, MSSQL.
+Read and enter data and run complex queries(Dynamic SQL).
 
 
 Develop an exceptions report:
