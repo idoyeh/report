@@ -1,6 +1,8 @@
 # report
-Wpf application for manager: C#, WPF, MSSQL.
+<title>
+  Wpf application for manager: C#, WPF, MSSQL.
 Read and enter data and run complex queries(Dynamic SQL).
+</title>
 
 Develop an exceptions report:
 Create a gui user interface that can be exported with a report that reports exceptions or value equality to a particular value by checking the database.
