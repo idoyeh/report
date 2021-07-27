@@ -13,3 +13,15 @@ The user selects the report period(start date and end date), a field for testing
 - Filters by the selected field and displays all columns in the same timestamp. If no date is selected, the entire date range in the report will be displayed.
 
 The sql database has 3 tables: DATA, STATUS and OPERATOR.
+
+1. DATA - A table that contains the values according to the different fields and the timestamp of each value.
+Time_Date - The timestamp. Uses the "From Date" and "To Date" fields.
+Value# - Measurement values. Uses the field selection menu in the report.
+Status# - Work mode. Used to check if the data is valid.
+Fields Value and Status are linked to each other by the number.
+
+2. OPERATOR - A table that contains the different operators.
+
+3. STATUS - A table containing the different statutes.
+Valid - Where the column value is 1, the data is correct.
+If the value is 0 , the Name must be displayed instead of the value in the report results.
