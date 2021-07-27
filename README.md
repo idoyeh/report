@@ -14,6 +14,7 @@ The user selects the report period(start date and end date), a field for testing
 - Filters by the selected field and displays all columns in the same timestamp. If no date is selected, the entire date range in the report will be displayed.
 
 # Example
+![report](https://user-images.githubusercontent.com/64954264/127176227-fb3c1fdc-ea8a-472f-8c55-c453ce876595.gif)
 
 
 
