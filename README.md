@@ -5,7 +5,7 @@ Read and enter data and run complex queries(Dynamic SQL).
 Develop an exceptions report:
 Create a gui user interface that can be exported with a report that reports exceptions or value equality to a particular value by checking the database.
 
-
+# part 1
 ✔ Report structure:
 The user selects the report period(start date and end date), a field for testing, operator and value.<br/>
 
@@ -17,7 +17,7 @@ The user selects the report period(start date and end date), a field for testing
 ![report](https://user-images.githubusercontent.com/64954264/127176227-fb3c1fdc-ea8a-472f-8c55-c453ce876595.gif)
 
 
-
+# part 2
 ✔ The sql database has 3 tables: DATA, STATUS and OPERATOR.
 
 1. DATA - A table that contains the values according to the different fields and the timestamp of each value.
